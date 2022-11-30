@@ -9,6 +9,7 @@ defmodule QiitaAdventCalendarUserCounter do
     |> elem(1)
     |> Enum.map(fn x -> Meeseeks.text(x) |> String.replace(" ","") end) 
     |> Enum.frequencies
+    |> Enum.sort
   end
 
   defp request_body(_, 10), do: "over retry challenge"
