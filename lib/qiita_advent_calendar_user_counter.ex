@@ -3,10 +3,8 @@ defmodule QiitaAdventCalendarUserCounter do
 
   @spec run(Calendar.year()) :: map()
   def run(year \\ Date.utc_today().year) do
-    body = request_body("https://qiita.com/advent-calendar/#{year}/elixir", 0)
-           |> Meeseeks.parse()
-
-    body
+    request_body("https://qiita.com/advent-calendar/#{year}/elixir", 0)
+    |> Meeseeks.parse()
     |> Meeseeks.fetch_all(css(".css-1covvrn .css-15wswuq .css-h63oov"))
     |> elem(1)
     |> Enum.map(fn x -> Meeseeks.text(x) |> String.replace(" ","") end) 
