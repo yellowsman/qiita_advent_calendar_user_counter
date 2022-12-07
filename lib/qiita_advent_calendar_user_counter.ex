@@ -12,7 +12,7 @@ defmodule QiitaAdventCalendarUserCounter do
     |> Enum.sort
   end
 
-  defp request_body(_, 10), do: "over retry challenge"
+  defp request_body(_, 10), do: "over retry challenge count!"
   defp request_body(target_url, retry_count) do
     result = HTTPoison.get!(target_url)
 
