@@ -1,9 +1,9 @@
 defmodule QiitaAdventCalendarUserCounter do
   import Meeseeks.CSS
 
-  @spec run(Calendar.year()) :: map()
-  def run(year \\ Date.utc_today().year) do
-    request_body("https://qiita.com/advent-calendar/#{year}/elixir", 0)
+  @spec run(Calendar.year(), String.t()) :: map()
+  def run(year \\ Date.utc_today().year, language \\ "elixir") do
+    request_body("https://qiita.com/advent-calendar/#{year}/#{language}", 0)
     |> Meeseeks.parse()
     |> Meeseeks.fetch_all(css(".css-1covvrn .css-15wswuq .css-h63oov"))
     |> elem(1)
